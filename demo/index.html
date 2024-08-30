@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Second Temple Timer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .time-unit {
+            font-size: 22px;
+            margin: 10px 0;
+        }
+        .label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Second Temple Timer</h1>
+        <div id="time-container">
+            <div class="time-unit"><span class="label">Total Days:</span> <span id="totaldays">0</span></div>
+            <div class="time-unit"><span class="label">Years:</span> <span id="years">0</span></div>
+            <div class="time-unit"><span class="label">Months:</span> <span id="months">0</span></div>
+            <div class="time-unit"><span class="label">Days:</span> <span id="days">0</span></div>
+            <div class="time-unit"><span class="label">Hours:</span> <span id="hours">0</span></div>
+            <div class="time-unit"><span class="label">Minutes:</span> <span id="minutes">0</span></div>
+            <div class="time-unit"><span class="label">Seconds:</span> <span id="seconds">0</span></div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="SecondTempleTimer.js"></script>
+    <script>
+        function updateTimer() {
+            var provider = new SecondTempleTimer.Provider();
+            
+            document.getElementById('totaldays').textContent = provider.getTotalDays();
+            document.getElementById('years').textContent = provider.getActualYears();
+            document.getElementById('months').textContent = provider.getActualMonths();
+            document.getElementById('days').textContent = provider.getActualDays();
+            document.getElementById('hours').textContent = provider.getActualHours();
+            document.getElementById('minutes').textContent = provider.getActualMinutes();
+            document.getElementById('seconds').textContent = provider.getActualSeconds();
+        }
+
+        // Update the timer every second
+        setInterval(updateTimer, 1000);
+
+        // Initial update
+        updateTimer();
+    </script>
+</body>
+</html>
