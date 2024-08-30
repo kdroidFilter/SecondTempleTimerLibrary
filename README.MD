@@ -4,6 +4,9 @@ The `SecondTempleTimer` is a multiplatform library, generated using Kotlin, that
 It calculates the elapsed time since the destruction of the Second Temple, providing real-time updates in years, months, days, hours, minutes, and seconds. 
 This library is designed to be versatile and can be integrated across different environments, including JavaScript, desktop, and mobile applications.
 
+## Acknowledgements
+This project is based on the excellent [KosherKotlin](https://github.com/Sternbach-Software/KosherKotlin) project, which provides a foundation for handling Jewish date calculations and other related functionalities.
+
 ## Getting Started
 
 ### Build platform artifacts
