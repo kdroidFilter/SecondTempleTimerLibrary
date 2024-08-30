@@ -49,7 +49,7 @@ This library is designed to be versatile and can be integrated across different 
 - Output: `/SecondTempleTimer/build/dist/wasmJs/productionExecutable/SecondTempleTimer-wasm-js.wasm`
 
 
-### Example Usage (For Javascript Usage, see Below)
+### Example Usage in Kotlin (For Javascript Usage, see Below)
 
 ```kotlin
 val provider = TimeIntervalProviderImpl()
