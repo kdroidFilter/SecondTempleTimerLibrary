@@ -98,7 +98,7 @@ The Provider class exposes several methods to retrieve different components of t
 5. **Exemple Usage**
 
 ```javascript
-<script type="text/javascript" src="path/to/SecondTempleTimer.js"></script>
+<script type="text/javascript" src="https://github.com/kdroidFilter/SecondTempleTimerLibrary/releases/download/0.1/SecondTempleTimer.js"></script>
 <script>
     function updateTimer() {
         var provider = new SecondTempleTimer.Provider();
