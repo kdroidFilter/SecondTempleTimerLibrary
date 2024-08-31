@@ -10,4 +10,3 @@ package sternbach.software.kosherkotlin.util
 //import sternbach.software.kosherkotlin.util.ZmanimFormatter
 import sternbach.software.kosherkotlin.util.GeoLocation
 import sternbach.software.kosherkotlin.util.NOAACalculator
-import sternbach.software.kosherkotlin.util.SunTimesCalculator

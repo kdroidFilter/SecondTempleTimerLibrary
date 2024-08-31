@@ -6,7 +6,7 @@ import sternbach.software.kosherkotlin.metadata.ZmanCalculationMethod
 import sternbach.software.kosherkotlin.metadata.ZmanDefinition
 import sternbach.software.kosherkotlin.metadata.ZmanType
 
-class ZmanDescriptionFormatter {
+internal class ZmanDescriptionFormatter {
     fun formatShortDescription(zman: Zman<*>, includeElevationDescription: Boolean): String {
         val definition = zman.definition
         val result = StringBuilder(getShortCalculationDescription(definition))

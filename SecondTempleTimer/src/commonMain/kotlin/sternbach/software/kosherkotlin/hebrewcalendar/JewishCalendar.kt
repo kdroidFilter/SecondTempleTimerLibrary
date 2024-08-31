@@ -28,7 +28,6 @@ import kotlinx.datetime.toInstant
 import kotlinx.datetime.toLocalDateTime
 import sternbach.software.kosherkotlin.hebrewcalendar.JewishCalendar.Parsha.NONE
 import sternbach.software.kosherkotlin.util.GeoLocation
-import kotlin.math.floor
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.hours
 import kotlin.time.Duration.Companion.milliseconds
@@ -57,7 +56,7 @@ import kotlin.time.Duration.Companion.seconds
  * @author Avrom Finkelstien 2002
  * @author Eliyahu Hershfeld 2011 - 2023
  */
-class JewishCalendar : JewishDate {
+internal class JewishCalendar : JewishDate {
     /**
      * Gets whether Israel holiday scheme is used or not. The default (if not set) is false.
      *
@@ -1672,58 +1671,6 @@ class JewishCalendar : JewishDate {
      */
     val sofZmanKidushLevana15Days: Instant
         get() = moladAsInstant + 15.days // 15 days after the molad. Must be added as hours, not days, to avoid DST/ST crossover issues. However, as of kotlinx-datetime version 0.4.0, it converts it to seconds/nanoseconds, so it should be fine.
-
-    /**
-     * Returns the *Daf Yomi (Bavli)* for the date that the LocalDate is set to. See the
-     * [HebrewDateFormatter.formatDafYomiBavli] for the ability to format the *daf* in
-     * Hebrew or transliterated *masechta* names.
-     *
-     * @return the daf as a [Daf]
-     */
-    val dafYomiBavli: Daf?
-        get() = YomiCalculator.getDafYomiBavli(this)
-
-    /**
-     * Returns the *Daf Yomi (Yerushalmi)* for the date that the LocalDate is set to. See the
-     * [HebrewDateFormatter.formatDafYomiYerushalmi] for the ability to format the *daf*
-     * in Hebrew or transliterated *masechta* names.
-     *
-     * @return the daf as a [Daf] or null if the date is on Tisha B'Av or Yom Kippur.
-     */
-    val dafYomiYerushalmi: Daf?
-        get() =
-            YerushalmiYomiCalculator.getDafYomiYerushalmi(this) // Days since Rosh Hashana year 1. Add 1/2 day as the first tekufas tishrei was 9 hours into the day. This allows all
-    // 4 years of the secular leap year cycle to share 47 days. Truncate 47D and 9H to 47D for simplicity.
-    // days of completed solar years
-    /**
-     * Returns the elapsed days since *Tekufas Tishrei*. This uses *Tekufas Shmuel* (identical to the [Julian Year](https://en.wikipedia.org/wiki/Julian_year_(astronomy)) with a solar year length of 365.25 days).
-     * The notation used below is D = days, H = hours and C = chalakim. *[Molad](https://en.wikipedia.org/wiki/Molad) BaHaRad* was 2D,5H,204C or 5H,204C from the start of *Rosh Hashana* year 1. For *molad
-     * Nissan* add 177D, 4H and 438C (6 * 29D, 12H and 793C), or 177D,9H,642C after *Rosh Hashana* year 1.
-     * *Tekufas Nissan* was 7D, 9H and 642C before *molad Nissan* according to the Rambam, or 170D, 0H and
-     * 0C after *Rosh Hashana* year 1. *Tekufas Tishrei* was 182D and 3H (365.25 / 2) before *tekufas
-     * Nissan*, or 12D and 15H before *Rosh Hashana* of year 1. Outside of Israel we start reciting *Tal
-     * Umatar* in *Birkas Hashanim* from 60 days after *tekufas Tishrei*. The 60 days include the day of
-     * the *tekufah* and the day we start reciting *Tal Umatar*. 60 days from the tekufah == 47D and 9H
-     * from *Rosh Hashana* year 1.
-     *
-     * @return the number of elapsed days since *tekufas Tishrei*.
-     *
-     * @see isVeseinTalUmatarStartDate
-     * @see isVeseinTalUmatarStartingTonight
-     * @see isVeseinTalUmatarRecited
-     */
-    val tekufasTishreiElapsedDays: Int
-        get() {
-            // Days since Rosh Hashana year 1. Add 1/2 day as the first tekufas tishrei was 9 hours into the day. This allows all
-            // 4 years of the secular leap year cycle to share 47 days. Truncate 47D and 9H to 47D for simplicity.
-            val days: Double =
-                getJewishCalendarElapsedDays(hebrewLocalDate.year) + (daysSinceStartOfJewishYear - 1) + 0.5
-            // days of completed solar years
-            val solar: Double = (hebrewLocalDate.year - 1) * 365.25
-            return floor(days - solar).toInt()
-        } // When starting on Sunday, it can be the start date or delayed from Shabbos
-    // keep the compiler happy
-// Not recited on Friday night// The 7th Cheshvan can't occur on Shabbos, so always return true for 7 Cheshvan
 
     /**
      * Returns true if the current day is *Isru Chag*. The method returns true for the day following *Pesach*

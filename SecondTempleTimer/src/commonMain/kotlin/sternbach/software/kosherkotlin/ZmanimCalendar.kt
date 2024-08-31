@@ -81,7 +81,7 @@ import kotlin.time.Duration.Companion.minutes
  *
  * @author  Eliyahu Hershfeld 2004 - 2022
  */
-open class ZmanimCalendar(
+internal open class ZmanimCalendar(
     geoLocation: GeoLocation = GeoLocation(),
     /**
      * Is elevation above sea level calculated for times besides sunrise and sunset. According to Rabbi Dovid Yehuda

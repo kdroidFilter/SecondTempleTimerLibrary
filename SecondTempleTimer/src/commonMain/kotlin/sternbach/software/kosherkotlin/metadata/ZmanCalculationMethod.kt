@@ -111,7 +111,7 @@ sealed interface ZmanCalculationMethod {
      * A method of calculation in which the later of two zmanim is used.
      * Meaning that if [zman1] occurs at 6:00 AM and [zman2] occurs at 6:05 AM, this zman takes on the value of 6:00 AM.
      * */
-    data class LaterOf(val zman1: ZmanDefinition, val zman2: ZmanDefinition): ZmanCalculationMethod {
+    data  class LaterOf(val zman1: ZmanDefinition, val zman2: ZmanDefinition): ZmanCalculationMethod {
         override fun valueToString(): String = "Later of: ${zman1.calculationMethod.valueToString()} or ${zman2.calculationMethod.valueToString()}"
         override fun format(): String = "Later of: ${zman1.calculationMethod.format()} or ${zman2.calculationMethod.format()}"
     }
@@ -329,7 +329,7 @@ sealed interface ZmanCalculationMethod {
         override fun format(): String = "Day starts at $dayStart and ends at $dayEnd"//TODO add relationships
         companion object {
 
-            fun fromCalculationMethod(
+            internal fun fromCalculationMethod(
                 dayStartCalculationMethod: ZmanCalculationMethod,
                 dayEndCalculationMethod: ZmanCalculationMethod = dayStartCalculationMethod,
                 dayStartsAtZman: ZmanType = ZmanType.ALOS,

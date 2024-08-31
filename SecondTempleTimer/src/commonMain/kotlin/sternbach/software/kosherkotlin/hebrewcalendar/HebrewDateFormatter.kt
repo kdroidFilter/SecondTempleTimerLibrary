@@ -43,7 +43,7 @@ import kotlin.text.StringBuilder
  *
  * @author  Eliyahu Hershfeld 2011 - 2023
  */
-class HebrewDateFormatter {
+internal class HebrewDateFormatter {
     /**
      * Returns if the formatter is set to use Hebrew formatting in the various formatting methods.
      *
@@ -642,33 +642,9 @@ class HebrewDateFormatter {
         // a 385 day year
     }
 
-    /**
-     * Formats the [Daf Yomi](https://en.wikipedia.org/wiki/Daf_Yomi) Bavli in the format of
-     * "עירובין נ״ב" in [Hebrew][isHebrewFormat],
-     * or the transliterated format of "Eruvin 52".
-     * @param daf the Daf to be formatted.
-     * @return the formatted daf.
-     */
-    fun formatDafYomiBavli(daf: Daf): String =
-        if (isHebrewFormat)
-            "${daf.masechta} ${formatHebrewNumber(daf.daf.toLong())}"
-        else "${daf.masechtaTransliterated} ${daf.daf}"
 
-    /**
-     * Formats the [Daf Yomi Yerushalmi](https://en.wikipedia.org/wiki/Jerusalem_Talmud#Daf_Yomi_Yerushalmi) in the format
-     * of "עירובין נ״ב" in [Hebrew][isHebrewFormat], or
-     * the transliterated format of "Eruvin 52".
-     *
-     * @param daf the Daf to be formatted.
-     * @return the formatted daf.
-     */
-    fun formatDafYomiYerushalmi(daf: Daf?): String {
-        if (daf == null)
-            return if (isHebrewFormat) Daf.yerushalmiMasechtos[39]
-            else Daf.yerushalmiMasechtosTransliterated[39]
-        return if (isHebrewFormat) "${daf.yerushalmiMasechta} ${formatHebrewNumber(daf.daf)}"
-        else "${daf.yerushalmiMasechtaTransliterated} ${daf.daf}"
-    }
+
+
 
     /**
      * Returns a Hebrew formatted string of a number. The method can calculate from 0 - 9999.

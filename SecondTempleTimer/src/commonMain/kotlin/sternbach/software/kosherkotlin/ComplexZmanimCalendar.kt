@@ -129,7 +129,7 @@ import kotlin.time.Duration.Companion.minutes
  *
  * @author  Eliyahu Hershfeld 2004 - 2023
  */
-class ComplexZmanimCalendar(
+internal class ComplexZmanimCalendar(
     location: GeoLocation
 ) : ZmanimCalendar(location) {
 
