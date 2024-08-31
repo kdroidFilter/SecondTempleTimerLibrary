@@ -9,5 +9,5 @@ data class TimeInterval(
     val days: Int,
     val hours: Int,
     val minutes: Int,
-    val secondes: Int,
+    val seconds: Int,
 )

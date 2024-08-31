@@ -23,5 +23,5 @@ class Provider {
 
     fun getActualMinutes(): Int = timeInterval.minutes
 
-    fun getActualSeconds(): Int = timeInterval.secondes
+    fun getActualSeconds(): Int = timeInterval.seconds
 }

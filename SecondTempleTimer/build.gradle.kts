@@ -3,10 +3,43 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlinx.serialization)
     id("convention.publication")
+    id("maven-publish")
 }
 
 group = "com.kdroid.secondtempletimer"
-version = "0.1"
+version = "0.1.2"
+
+publishing {
+    publications {
+        // Publication pour la bibliothèque multiplateforme
+        create<MavenPublication>("maven") {
+            // Configuration des coordonnées du projet
+            groupId = project.group.toString()
+            artifactId = "secondtempletimer"
+            version = project.version.toString()
+
+            from(components["kotlin"])
+
+            pom {
+                name.set("Second Temple Timer")
+                description.set("A Kotlin Multiplatform library for Second Temple Timer")
+                url.set("https://github.com/kdroidFilter/SecondTempleTimerLibrary")
+            }
+        }
+    }
+    repositories {
+        mavenLocal()
+        maven {
+            name = "reposiliteRepository"
+            url = uri("http://10.0.0.6:8080/releases")
+            credentials(PasswordCredentials::class)
+            authentication {
+                create<BasicAuthentication>("basic")
+            }
+            isAllowInsecureProtocol = true
+        }
+    }
+}
 
 kotlin {
     jvmToolchain(11)

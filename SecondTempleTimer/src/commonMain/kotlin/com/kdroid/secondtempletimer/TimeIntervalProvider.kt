@@ -81,10 +81,6 @@ interface TimeIntervalProvider {
 
         // Determines whether the difference should be calculated relative to today's or yesterday's sunset
         val diffInMillis = if (currentTime > todaySunsetTime) currentTime - todaySunsetTime else currentTime - yesterdaySunsetTime
-        println("todaySunsetTime $todaySunsetTime")
-        println("yesterdaySunsetTime $yesterdaySunsetTime")
-        println("currentTime $currentTime")
-        println("diffInMillis $diffInMillis")
 
         // Convert the difference to hours, minutes and seconds
         val hours = (diffInMillis.milliseconds.inWholeHours).toInt()
