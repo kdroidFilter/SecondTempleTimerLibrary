@@ -31,8 +31,11 @@ publishing {
         mavenLocal()
         maven {
             name = "reposiliteRepository"
-            url = uri("http://10.0.0.6:8080/releases")
-            credentials(PasswordCredentials::class)
+            url = uri("http://85.130.160.209:8080/releases")
+            credentials{
+                username = System.getenv("MAVEN_USER")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
             authentication {
                 create<BasicAuthentication>("basic")
             }
