@@ -41,5 +41,5 @@ jobs:
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
-      run: ./gradlew publishAllPublicationsToReposiliteRepositoryRepository
+      run: ./gradlew publishAllPublicationsToReposiliteRepositoryRepository -PreposiliteRepositoryUsername=${{ secrets.MAVEN_USER }} -PreposiliteRepositoryPassword=${{ secrets.MAVEN_PASSWORD }}
 
