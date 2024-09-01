@@ -17,7 +17,7 @@ jobs:
     env:
       MAVEN_USERNAME: ${{ secrets.MAVEN_USER }}
       MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
@@ -41,5 +41,5 @@ jobs:
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
-      run: ./gradlew publishAllPublicationsToReposiliteRepositoryRepository -PreposiliteRepositoryUsername=${{ secrets.MAVEN_USER }} -PreposiliteRepositoryPassword=${{ secrets.MAVEN_PASSWORD }}
+      run: ./gradlew publishAllPublicationsToReposiliteRepositoryRepository
 
